@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-sidebar {
+    width: 1150px;
+    display: flex;
+  }
+  &-content {
+    min-height: 1000px;
+  }
+}
