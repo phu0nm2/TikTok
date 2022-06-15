@@ -1,0 +1,48 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.account {
+  //   padding: 0.5rem 0;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1rem;
+  &__content {
+    display: flex;
+    align-items: center;
+
+    &-img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: none;
+    }
+
+    &-info {
+      margin-left: 1.2rem;
+
+      h4 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-top: 0.3rem;
+      }
+    }
+
+    &-check {
+      padding-left: 8px;
+      color: blue;
+    }
+  }
+}

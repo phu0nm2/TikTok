@@ -2,11 +2,11 @@ import React from "react";
 
 import { Col, Row } from "antd";
 
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Header from "../Header";
+import Sidebar from "../Sidebar";
 import "./styles.scss";
 
-const DefaultLayout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <div className="layout">
@@ -24,4 +24,4 @@ const DefaultLayout = ({ children }) => {
   );
 };
 
-export default DefaultLayout;
+export default Layout;

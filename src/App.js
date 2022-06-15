@@ -3,23 +3,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Fragment } from "react";
 
 import { publicRoutes } from "./Routes";
-import DefaultLayout from "./components/Layout/DefaultLayout";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {publicRoutes.map((route, index) => {
-          const Layout = route.layout === null ? Fragment : DefaultLayout;
+          const LayOut = route.layout === null ? Fragment : Layout;
           const Page = route.component;
           return (
             <Route
               key={index}
               path={route.path}
               element={
-                <Layout>
+                <LayOut>
                   <Page></Page>
-                </Layout>
+                </LayOut>
               }
             ></Route>
           );
