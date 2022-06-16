@@ -14,6 +14,7 @@ const ButtonControl = ({
   let Comp = "button";
   const props = {
     onClick,
+
     ...passProps,
   };
 

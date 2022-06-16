@@ -123,5 +123,21 @@
       width: 20px;
       margin-right: 8px;
     }
+
+    i {
+      margin-left: 16px;
+      cursor: pointer;
+      img {
+        width: 25px;
+      }
+    }
+
+    &-menu {
+      width: 224px;
+    }
+  }
+
+  &__menu {
+    // width: 100px;
   }
 }
