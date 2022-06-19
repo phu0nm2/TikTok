@@ -20,6 +20,7 @@
     background: rgba(255, 255, 255, 1);
     height: 100%;
     width: 1150px;
+    padding: 0 24px;
   }
 
   &__search,
@@ -135,9 +136,38 @@
     &-menu {
       width: 224px;
     }
-  }
 
-  &__menu {
-    // width: 100px;
+    &-message,
+    &-email {
+      font-size: 22px;
+      margin: 8px 12px;
+      padding: 8px 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    &-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 12px;
+      cursor: pointer;
+    }
   }
+}
+
+// custom tippy box
+.tippy-box {
+  border-radius: 8px;
+  background-color: rgba(84, 84, 84, 0.92);
+  color: rgb(255, 255, 255);
+}
+.tippy-box[data-placement^="bottom"] > .tippy-arrow:before {
+  top: -8px;
+}
+
+.tippy-arrow:before {
+  color: rgba(84, 84, 84, 0.92);
 }

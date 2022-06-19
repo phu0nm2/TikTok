@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { images } from "../../assets/images";
 
 import {
@@ -7,32 +9,83 @@ import {
   TranslationOutlined,
   DesktopOutlined,
   QuestionCircleOutlined,
+  MailOutlined,
+  MessageOutlined,
+  UserOutlined,
+  DollarCircleOutlined,
+  SettingOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
-import Tippy from "@tippyjs/react/headless";
+
+import HeadlessTippy from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react/";
+import "tippy.js/dist/tippy.css";
 
 import ModalPopper from "../ModalPopper";
 import AccountItem from "../AccountItem";
 import Menu from "../Menu";
+import ButtonControl from "../ButtonControl";
 
 import "./styles.scss";
-import ButtonControl from "../ButtonControl";
 
 function Header() {
   const [searchUser, setSearchUser] = React.useState([]);
 
+  const isLogin = true;
+
   const MENU_ITEMS = [
     {
       icon: <TranslationOutlined />,
-      title: "English",
+      lang: "Tiếng Việt",
+      children: {
+        title: "Ngôn ngữ",
+        data: [
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+        ],
+      },
     },
     {
       icon: <QuestionCircleOutlined />,
-      title: "Feedback and Help",
-      href: "/feedback",
+      title: "Phảnh hồi và trợ giúp",
+      to: "/feedback",
     },
     {
       icon: <DesktopOutlined />,
-      title: "Keyboard",
+      title: "Phìm tắt trên bàn phím",
+    },
+  ];
+
+  const menuProfile = [
+    {
+      icon: <UserOutlined />,
+      title: "Xem hồ sơ",
+      to: "/profile",
+    },
+    {
+      icon: <DollarCircleOutlined />,
+      title: "Nhận xu",
+      to: "/",
+    },
+    {
+      icon: <SettingOutlined />,
+      title: "Cài đặt",
+      to: "/setting",
+    },
+
+    ...MENU_ITEMS,
+
+    {
+      icon: <LogoutOutlined />,
+      title: "Đăng xuất",
+      to: "/logout",
+      separate: "separate",
     },
   ];
 
@@ -42,18 +95,21 @@ function Header() {
     }, 0);
   }, []);
 
+  const handleMenuChange = (menuItem) => {
+    console.log(menuItem);
+  };
+
   return (
     <header className="header">
       <div className="header-content container">
-        <div className="header-logo">
+        <Link to="/" className="header-logo">
           <img src={images.logo} alt="logo" />
-        </div>
-        {/* Tippy Searh */}
+        </Link>
 
-        <Tippy
+        {/* Tippy Searh */}
+        <HeadlessTippy
           interactive
-          // visible={searchUser.length > 0}
-          visible
+          visible={searchUser.length > 0}
           render={(attrs) => (
             <div className="header__account" tabIndex="-1" {...attrs}>
               <ModalPopper>
@@ -86,8 +142,9 @@ function Header() {
               </button>
             </form>
           </div>
-        </Tippy>
+        </HeadlessTippy>
 
+        {/* actions */}
         <div className="header__actions">
           <ButtonControl
             className="btn__control header__actions-upload"
@@ -103,20 +160,51 @@ function Header() {
             Tải lên
           </ButtonControl>
 
-          <ButtonControl
-            className="btn__control header__actions-login"
-            to="/login"
-          >
-            Đăng nhập
-          </ButtonControl>
+          {isLogin ? (
+            <>
+              <Tippy delay={[0, 200]} content="Message">
+                <button className="header__actions-message">
+                  <MessageOutlined />
+                </button>
+              </Tippy>
 
-          <Menu data={MENU_ITEMS}>
-            <i className="">
-              <img
-                src="https://img.icons8.com/ios-glyphs/30/undefined/menu-2.png"
-                alt="menu"
-              />
-            </i>
+              <Tippy delay={[0, 200]} content="Email">
+                <button className="header__actions-email">
+                  <MailOutlined />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <ButtonControl
+                className="btn__control header__actions-login"
+                to="/login"
+              >
+                Đăng nhập
+              </ButtonControl>
+            </>
+          )}
+
+          <Menu
+            data={isLogin ? menuProfile : MENU_ITEMS}
+            onChange={handleMenuChange}
+          >
+            {isLogin ? (
+              <div>
+                <img
+                  className="header__actions-avatar"
+                  src="https://randomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
+                  alt="avatar"
+                />
+              </div>
+            ) : (
+              <i className="">
+                <img
+                  src="https://img.icons8.com/ios-glyphs/30/undefined/menu-2.png"
+                  alt="menu"
+                />
+              </i>
+            )}
           </Menu>
         </div>
       </div>

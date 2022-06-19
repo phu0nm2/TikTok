@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
     <>
       <div className="layout">
         <Header></Header>
+
         <Row className="layout-sidebar">
           <Col span={12}>
             <Sidebar></Sidebar>
