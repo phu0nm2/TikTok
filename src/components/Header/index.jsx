@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { images } from "../../assets/images";
-
 import {
   LoadingOutlined,
-  CloseCircleOutlined,
   TranslationOutlined,
   DesktopOutlined,
   QuestionCircleOutlined,
@@ -25,8 +22,10 @@ import ModalPopper from "../ModalPopper";
 import AccountItem from "../AccountItem";
 import Menu from "../Menu";
 import ButtonControl from "../ButtonControl";
+import { CloseIcon, LogoIcon, SearchIcon, UploadIcon } from "../Icons";
 
 import "./styles.scss";
+import Image from "../Image";
 
 function Header() {
   const [searchUser, setSearchUser] = React.useState([]);
@@ -103,10 +102,9 @@ function Header() {
     <header className="header">
       <div className="header-content container">
         <Link to="/" className="header-logo">
-          <img src={images.logo} alt="logo" />
+          <LogoIcon></LogoIcon>
         </Link>
 
-        {/* Tippy Searh */}
         <HeadlessTippy
           interactive
           visible={searchUser.length > 0}
@@ -125,12 +123,11 @@ function Header() {
             <form className="header__from" action="#">
               <input
                 className="header__from-input"
-                placeholder="Search accounts and videos"
+                placeholder="Tìm kiếm tài khoản và videos"
                 type="text"
               />
               <div className="header__from-close">
-                {/* <img src={images.close} alt="Close" /> */}
-                <CloseCircleOutlined />
+                <CloseIcon className=""></CloseIcon>
               </div>
 
               <div className="header__from-loading">
@@ -138,7 +135,7 @@ function Header() {
               </div>
 
               <button className="header__from-btn" type="button">
-                <img src={images.search} alt="search" />
+                <SearchIcon></SearchIcon>
               </button>
             </form>
           </div>
@@ -148,13 +145,7 @@ function Header() {
         <div className="header__actions">
           <ButtonControl
             className="btn__control header__actions-upload"
-            leftIcon={
-              <img
-                className="upload-icon"
-                src={images.uploadIcon}
-                alt="uploadIcon"
-              />
-            }
+            leftIcon={<UploadIcon className="upload-icon"></UploadIcon>}
             to="/Upload"
           >
             Tải lên
@@ -191,15 +182,16 @@ function Header() {
           >
             {isLogin ? (
               <div>
-                <img
+                <Image
                   className="header__actions-avatar"
-                  src="https://randomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
+                  src="https://andomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
                   alt="avatar"
+                  fallback="https://randomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
                 />
               </div>
             ) : (
               <i className="">
-                <img
+                <Image
                   src="https://img.icons8.com/ios-glyphs/30/undefined/menu-2.png"
                   alt="menu"
                 />

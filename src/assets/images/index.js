@@ -3,4 +3,5 @@ export const images = {
   search: require("./search.svg").default,
   close: require("./close.svg").default,
   uploadIcon: require("./uploadIcon.svg").default,
+  noImage: require("./NoImg.png"),
 };
