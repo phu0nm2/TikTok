@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
-  LoadingOutlined,
   TranslationOutlined,
   DesktopOutlined,
   QuestionCircleOutlined,
@@ -14,22 +13,18 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 
-import HeadlessTippy from "@tippyjs/react/headless";
-import Tippy from "@tippyjs/react/";
+import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
-import ModalPopper from "../ModalPopper";
-import AccountItem from "../AccountItem";
 import Menu from "../Menu";
 import ButtonControl from "../ButtonControl";
-import { CloseIcon, LogoIcon, SearchIcon, UploadIcon } from "../Icons";
+import { LogoIcon, UploadIcon } from "../Icons";
 
 import "./styles.scss";
 import Image from "../Image";
+import Search from "../Search";
 
 function Header() {
-  const [searchUser, setSearchUser] = React.useState([]);
-
   const isLogin = true;
 
   const MENU_ITEMS = [
@@ -88,12 +83,6 @@ function Header() {
     },
   ];
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setSearchUser([]);
-    }, 0);
-  }, []);
-
   const handleMenuChange = (menuItem) => {
     console.log(menuItem);
   };
@@ -105,41 +94,7 @@ function Header() {
           <LogoIcon></LogoIcon>
         </Link>
 
-        <HeadlessTippy
-          interactive
-          visible={searchUser.length > 0}
-          render={(attrs) => (
-            <div className="header__account" tabIndex="-1" {...attrs}>
-              <ModalPopper>
-                <h5 className="header__account-title">Accounts</h5>
-
-                <AccountItem></AccountItem>
-                <AccountItem></AccountItem>
-              </ModalPopper>
-            </div>
-          )}
-        >
-          <div className="header__search">
-            <form className="header__from" action="#">
-              <input
-                className="header__from-input"
-                placeholder="Tìm kiếm tài khoản và videos"
-                type="text"
-              />
-              <div className="header__from-close">
-                <CloseIcon className=""></CloseIcon>
-              </div>
-
-              <div className="header__from-loading">
-                <LoadingOutlined />
-              </div>
-
-              <button className="header__from-btn" type="button">
-                <SearchIcon></SearchIcon>
-              </button>
-            </form>
-          </div>
-        </HeadlessTippy>
+        <Search></Search>
 
         {/* actions */}
         <div className="header__actions">
@@ -184,13 +139,13 @@ function Header() {
               <div>
                 <Image
                   className="header__actions-avatar"
-                  src="https://andomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
+                  src="https://randomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
                   alt="avatar"
                   fallback="https://randomwordgenerator.com/img/picture-generator/55e6dc464b57af14f1dc8460962e33791c3ad6e04e5074417d2e7ed6964acd_640.jpg"
                 />
               </div>
             ) : (
-              <i className="">
+              <i>
                 <Image
                   src="https://img.icons8.com/ios-glyphs/30/undefined/menu-2.png"
                   alt="menu"

@@ -4,6 +4,7 @@ import { Fragment } from "react";
 
 import { publicRoutes } from "./Routes";
 import Layout from "./components/Layout";
+import "./index.scss";
 
 function App() {
   return (
