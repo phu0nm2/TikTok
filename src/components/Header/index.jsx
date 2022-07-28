@@ -42,6 +42,126 @@ function Header() {
             code: "vi",
             lang: "Tiếng Việt",
           },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
+          {
+            code: "en",
+            lang: "English",
+          },
+          {
+            code: "vi",
+            lang: "Tiếng Việt",
+          },
         ],
       },
     },

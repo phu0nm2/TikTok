@@ -58,7 +58,7 @@ const Menu = ({ children, data, onChange = defaultFn }) => {
               ""
             )}
 
-            {renderItem()}
+            <div className="menu__scrollable">{renderItem()}</div>
           </ModalPopper>
         </div>
       )}

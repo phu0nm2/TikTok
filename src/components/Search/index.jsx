@@ -1,13 +1,18 @@
 import React from "react";
 
 import { LoadingOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { CloseIcon, SearchIcon } from "../Icons";
 
 import HeadlessTippy from "@tippyjs/react/headless";
 import ModalPopper from "../ModalPopper";
 import AccountItem from "../AccountItem";
-import { CloseIcon, SearchIcon } from "../Icons";
+
+import useDebounce from "../hooks/useDebounce";
+
+import { apiUsers } from "../../api/apiTikTok";
 
 import "./styles.scss";
+import { fetchSearch } from "../../store/reducers/users";
 
 const Search = () => {
   const [searchUsers, setSearchUsers] = React.useState([]);
@@ -15,30 +20,25 @@ const Search = () => {
   const [showHideUsers, setShowHideUsers] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
 
+  const debouce = useDebounce(searchValue, 700);
   const inputRef = React.useRef();
 
   React.useEffect(() => {
-    if (!searchValue.trim()) {
+    if (!debouce.trim()) {
       return;
     }
 
-    setLoading(true);
+    const fetchApi = async () => {
+      setLoading(true);
 
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        searchValue
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchUsers(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-  }, [searchValue]);
+      const res = await fetchSearch(debouce);
+
+      setSearchUsers(res);
+      setLoading(false);
+    };
+
+    fetchApi();
+  }, [debouce]);
 
   const handleClear = (e) => {
     setSearchValue("");

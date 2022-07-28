@@ -12,7 +12,13 @@
     }
   }
 
+  &__scrollable {
+    height: auto;
+    overflow-y: auto;
+  }
+
   &__item {
+    display: block;
     width: 100%;
     padding: 8px 0;
     background-color: #fff;
