@@ -50,6 +50,15 @@ const Search = () => {
     setShowHideUsers(false);
   };
 
+  const handleChange = (e) => {
+    const searchInput = e.target.value;
+
+    if (searchInput.startsWith(" ")) {
+      return;
+    }
+
+    setSearchValue(searchInput);
+  };
   return (
     <HeadlessTippy
       // className="search"
@@ -72,7 +81,7 @@ const Search = () => {
           <input
             ref={inputRef}
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={handleChange}
             onFocus={() => setShowHideUsers(true)}
             className="search__from-input"
             placeholder="Tìm kiếm tài khoản và videos"
@@ -92,7 +101,11 @@ const Search = () => {
             </div>
           )}
 
-          <button className="search__from-btn" type="button">
+          <button
+            className="search__from-btn"
+            type="button"
+            onMouseDown={(e) => e.preventDefault()}
+          >
             <SearchIcon></SearchIcon>
           </button>
         </form>

@@ -9,7 +9,12 @@ import MenuBack from "./MenuBack";
 
 const defaultFn = () => {};
 
-const Menu = ({ children, data, onChange = defaultFn }) => {
+const Menu = ({
+  children,
+  data,
+  onChange = defaultFn,
+  hideOnClick = false,
+}) => {
   const [history, setHistory] = React.useState([{ data: data }]);
 
   const curr = history[history.length - 1];
@@ -39,6 +44,7 @@ const Menu = ({ children, data, onChange = defaultFn }) => {
       // visible
       delay={[0, 800]}
       offset={[12, 6]}
+      hideOnClick={hideOnClick}
       interactive
       placement="bottom-end"
       render={(attrs) => (
