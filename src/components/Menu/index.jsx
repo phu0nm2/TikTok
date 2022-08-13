@@ -54,7 +54,7 @@ const Menu = ({
 
             {history.length > 1 ? (
               <MenuBack
-                title="Language"
+                title={curr.title}
                 history={history.data}
                 onBack={() => {
                   setHistory((prev) => prev.slice(0, prev.length - 1));

@@ -9,9 +9,8 @@ import "./styles.scss";
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="layout">
-        <Header></Header>
-
+      <Header></Header>
+      <div className="layout ">
         <Row className="layout-sidebar">
           <Col span={12}>
             <Sidebar></Sidebar>
